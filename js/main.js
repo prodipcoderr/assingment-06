@@ -47,7 +47,7 @@ const displayPosts = (post) => {
       </div>
     </div>
     <div class="post-title">
-      <h3 class="font-mulish font-bold text-[20px]">${post.title}</h3>
+      <h3 id="title" class="font-mulish font-bold text-[20px]">${post.title}</h3>
     </div>
     <div class="post-info-text">
       <p class="font-inter font-normal text-[16px]">${post.description}</p>
@@ -61,7 +61,7 @@ const displayPosts = (post) => {
         </div>
         <div class="watch flex space-x-5">
           <span><img src="./images/eye.svg" alt=""></span>
-          <h5>${post.view_count}</h5>
+          <h5 id="view-count">${post.view_count}</h5>
         </div>
         <div class="time flex space-x-5">
           <span><img src="./images/clock.svg" alt=""></span>
@@ -69,13 +69,40 @@ const displayPosts = (post) => {
         </div>
       </div>
       <div class="side-two bg-green-500 p-2 rounded-full">
-        <span><img src="./images/mail.svg" alt=""></span>
-      </div>
-    </div>
-  </div>`;
+        <span onclick= "showRead('${post.title}',${post.view_count})" class="cursor-pointer"><img src="./images/mail.svg" alt=""></span>
+      </div >
+    </div >
+  </div > `;
     postsContainer.appendChild(postDive);
   });
 };
+
+const showRead = (title, views) => {
+  const readTitle = title;
+  const readViewCount = views;
+
+  const readBoxContainer = document.getElementById('read-post-section')
+  const readDivBox = document.createElement('div');
+
+  readDivBox.classList = `flex justify-between p-4 bg-gray-400 mt-2`
+  readDivBox.innerHTML = `
+  <div class="read-title">
+    <h5>${readTitle}</h5>
+  </div>
+    <div class="read-view-acount">
+    <h5>${readViewCount}</h5></div>
+  `
+  readBoxContainer.appendChild(readDivBox);
+  addItem()
+
+}
+
+let sum = 0;
+function addItem() {
+  sum += 1;
+  const count = document.getElementById("read-count"); // Get the element
+  count.innerText = sum;
+}
 
 const searchBtn = () => {
   const searchInput = document.getElementById('search-field');
@@ -84,5 +111,5 @@ const searchBtn = () => {
   loadData(searchvalue);
 }
 
-
 loadData()
+
