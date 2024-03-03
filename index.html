@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <!-- Header section start here -->
+
+  <header id="Header-section">
+    <div class="container mx-auto p-4">
+      <div id="main-section" class="flex justify-between my-3 items-center">
+        <div id="logo-section">
+          <div class="logo">
+            <img src="./images/logo.png" alt="site logo" />
+          </div>
+        </div>
+        <div id="menu-section" class="flex gap-5 ml-5 items-center">
+          <div class="all-tool-menu space-x-3">
+            <div class="tooltip" data-tip="Home">
+              <button class="rounded-full w-12 h-12 bg-gray-50 border flex items-center justify-center">
+                <img src="./images/home.svg" alt="home-icon" />
+              </button>
+            </div>
+            <div class="tooltip" data-tip="ToolTip">
+              <button class="rounded-full w-12 h-12 bg-gray-50 border flex items-center justify-center">
+                <img src="./images/edit.svg" alt="edit-icon" />
+              </button>
+            </div>
+            <div class="tooltip" data-tip="Users">
+              <button class="rounded-full w-12 h-12 bg-gray-50 border flex items-center justify-center">
+                <img src="./images/user-plus.svg" alt="user-icon" />
+              </button>
+            </div>
+            <div class="tooltip" data-tip="Flag">
+              <button class="rounded-full w-12 h-12 bg-gray-50 border flex items-center justify-center">
+                <img src="./images/flag.svg" alt="flag" />
+              </button>
+            </div>
+          </div>
+
+          <div class="sign-in-section">
+            <button class="py-3 px-10 rounded-lg bg-[#797DFC] text-white text-[20px]">
+              sign in
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Header section start here -->
+  <main>
+    <div class="container mx-auto p-4">
+      <!-- Banner section start here -->
+      <section id="banner-section">
+        <div id="banner-main"
+          class="grid grid-cols-4 bg-blue-950 bg-[url('./images/bgbanner.png')] bg-no-repeat bg-contain bg-bottom text-white rounded-[50px] p-28 items-center">
+          <!-- Banner text here -->
+          <div class="banner-text space-y-5 col-span-3">
+            <h1 class="font-mulish font-black text-7xl space-y-7">
+              Welcome to the <br />
+              <span class="bg-gradient-to-r from-blue-600 to-indigo-400 inline-block text-transparent bg-clip-text"">ReTro</span> Forum
+              </h1>
+              <p class=" font-mulish text-[22px] font-medium space-y-7">
+                Share your favorite opinion and win and wp <br> forum coffee mug!
+                </p>
+                <div class="search">
+                  <div class="overflow-hidden z-0 rounded-full relative p-3 w-6/12">
+                    <div class="relative flex z-50 bg-white rounded-full">
+                      <input type="text" id="search-field" placeholder="Search here anything"
+                        class="rounded-full flex-1 px-6 py-4 text-gray-700 focus:outline-none">
+                      <button onclick="searchBtn()"
+                        class="bg-indigo-500 text-white rounded-full font-semibold px-8 py-4 hover:bg-indigo-400 focus:bg-indigo-600 focus:outline-none mr-1 mt-1 mb-1">Search</button>
+                    </div>
+                  </div>
+                </div>
+          </div>
+          <!-- Banner info here -->
+          <div class="banner-info col-span-1">
+            <div class="info-box p-10 bg-blue-50 text-fuchsia-600 rounded-3xl">
+              <div class="info-item flex justify-between mb-3 font-mulish font-medium text-black">
+                <h3>Registered Users</h3>
+                <h3>03</h3>
+              </div>
+              <div class="info-item flex justify-between mb-3 font-mulish font-medium text-black">
+                <h3>Forum</h3>
+                <h3>05</h3>
+              </div>
+              <div class="info-item flex justify-between mb-3 font-mulish font-medium text-black">
+                <h3>Topics</h3>
+                <h3>01</h3>
+              </div>
+              <div class="info-item flex justify-between mb-3 font-mulish font-medium text-black">
+                <h3>Replies</h3>
+                <h3>01</h3>
+              </div>
+            </div>
+          </div>
+      </section>
+      <!-- Banner section start here -->
+
+
+      <section id="discuss-section" class="mt-20">
+        <div class="discuss-title text-center space-y-2">
+          <h3 class="font-mulish font-black text-[40px]">Let’s Discuss</h3>
+          <p class="font-inter text-2xl">Yes, you can run unit tests and view the results directly within the
+            app. The <br> integrated testing features allow for a streamlined .</p>
+        </div>
+
+        <!-- Disciss-post section -->
+        <section id="#discuss-post-container" class="grid grid-cols-3 mt-16">
+          <div id="discuss-post" class="col-span-2">
+
+          </div>
+          <div id="read-post" class="col-span-1"></div>
+        </section>
+        <!-- Disciss-post section -->
+      </section>
+
+
+
+    </div>
+  </main>
+  <footer></footer>
+  <script src="./js/main.js"></script>
+</body>
+
+</html>
