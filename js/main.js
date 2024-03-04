@@ -118,4 +118,60 @@ const searchBtn = () => {
   loadData(searchvalue);
 };
 
+//  Latest post fetch api here
+const latestPost = async () => {
+  const dataRes = await fetch(
+    'https://openapi.programming-hero.com/api/retro-forum/latest-posts'
+  );
+  const latestData = await dataRes.json();
+  latestDataShow(latestData);
+};
+
+const latestDataShow = (latestPostData) => {
+  const latestPosts = document.getElementById('latest-post-card');
+  latestPostData.forEach((post) => {
+    console.log(post);
+    const latestPostsCard = document.createElement('div');
+    latestPostsCard.classList = `card p-5 border`;
+    latestPostsCard.innerHTML = `
+
+    <div class="card-images w-full h-72 bg-green-200 overflow-hidden rounded-xl">
+    <img class="w-full h-full" src="${post.cover_image}" alt="">
+     </div>
+              <div class="date-section mt-5 mb-5">
+                <h3>${
+                  post.author.posted_date
+                    ? post.author.posted_date
+                    : 'No publish date'
+                }</h3>
+              </div>
+              <div class="card-title">
+                <h3 class="font-mulish font-bold">${post.title}</h3>
+              </div>
+              <div class="paragraph mt-4 mb-6">
+                <p>${post.description}</p>
+              </div>
+              <div class="users flex gap-3 items-center">
+                <div class="user-image">
+                  <div class="avatar">
+                    <div class="w-12 rounded-full">
+                      <img src="${post.profile_image}" />
+                    </div>
+                  </div>
+                </div>
+                <div class="user-info">
+                  <h3 class="font-mulish font-bold">${post.author.name}</h3>
+                  <h3>${
+                    post.author.designation
+                      ? post.author.designation
+                      : 'Unknown Designation'
+                  }</h3>
+                </div>
+              </div>
+    `;
+    latestPosts.appendChild(latestPostsCard);
+  });
+};
+
 loadData();
+latestPost();
