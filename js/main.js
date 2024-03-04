@@ -1,7 +1,4 @@
-
-
 const loadData = async (searchvalue) => {
-
   if (searchvalue) {
     const response = await fetch(
       `https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchvalue}`
@@ -17,10 +14,7 @@ const loadData = async (searchvalue) => {
     const allPosts = data.posts;
     displayPosts(allPosts);
   }
-
 };
-
-
 
 const displayPosts = (post) => {
   const postsContainer = document.getElementById('discuss-post');
@@ -30,7 +24,8 @@ const displayPosts = (post) => {
     postDive.classList = `posts-section bg-[#797DFC10] border rounded-md border-purple-400 p-9 flex gap-10 mb-4 w-full`;
     postDive.innerHTML = `
     <div class="author-image">
-    <div class="avatar">
+    <div class="avatar relative">
+    <div id="${post.id}" class="absolute w-4 h-4 z-10 right-[-08px] top-[-05px] border-2 rounded-full"></div>
       <div class="w-24 rounded">
         <img src="${post.image}" />
       </div>
@@ -74,6 +69,9 @@ const displayPosts = (post) => {
     </div >
   </div > `;
     postsContainer.appendChild(postDive);
+
+    const postActive = post.isActive;
+    activePost(postActive, post.id);
   });
 };
 
@@ -81,35 +79,43 @@ const showRead = (title, views) => {
   const readTitle = title;
   const readViewCount = views;
 
-  const readBoxContainer = document.getElementById('read-post-section')
+  const readBoxContainer = document.getElementById('read-post-section');
   const readDivBox = document.createElement('div');
 
-  readDivBox.classList = `flex justify-between p-4 bg-gray-400 mt-2`
+  readDivBox.classList = `flex justify-between p-4 bg-gray-200 mt-2 rounded-xl`;
   readDivBox.innerHTML = `
   <div class="read-title">
-    <h5>${readTitle}</h5>
+    <h5 class="font-mulish font-[700]">${readTitle}</h5>
   </div>
-    <div class="read-view-acount">
+    <div class="read-view-acount flex space-x-1">
+    <img src="./images/eye.svg" alt=""></span> 
     <h5>${readViewCount}</h5></div>
-  `
+  `;
   readBoxContainer.appendChild(readDivBox);
-  addItem()
-
-}
+  addItem();
+};
 
 let sum = 0;
-function addItem() {
+const addItem = () => {
   sum += 1;
-  const count = document.getElementById("read-count"); // Get the element
+  const count = document.getElementById('read-count');
   count.innerText = sum;
-}
+};
+
+const activePost = (active, id) => {
+  const activePost = document.getElementById(id);
+  if (active) {
+    activePost.classList.add('bg-green-700');
+  } else {
+    activePost.classList.add('bg-red-700');
+  }
+};
 
 const searchBtn = () => {
   const searchInput = document.getElementById('search-field');
-  const searchvalue = searchInput.value
+  const searchvalue = searchInput.value;
   console.log(searchvalue);
   loadData(searchvalue);
-}
+};
 
-loadData()
-
+loadData();
